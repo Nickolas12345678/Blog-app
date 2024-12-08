@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@100;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{css/style.css}" href="../static/css/style.css">
+  <title>Add or Edit Post</title>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <h1 class="title">Add or Edit Post</h1>
+    <div class="form_block">
+      <form action="#" th:action="@{/save}" th:method="post">
+        <input type="hidden" th:if="${post != null}" th:name="id" th:value="${post.id}">
+
+        <label for="title_input">Title</label>
+        <input id="title_input" name="title" type="text" th:value="${post != null ? post.title : ''}" placeholder="Enter title" required>
+
+        <label for="content_input">Description</label>
+        <textarea id="content_input" name="content" placeholder="Enter description" required rows="5" th:text="${post != null ? post.content : ''}"></textarea>
+
+        <div class="button_group">
+          <input type="submit" value="Add Post" class="input_submit add_button">
+          <input type="submit" value="Update Post" class="input_submit update_button">
+        </div>
+      </form>
+    </div>
+  </header>
+</div>
+</body>
+</html>
